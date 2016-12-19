@@ -1,0 +1,63 @@
+<% include ../includes/header.html %>
+<div class="container-fluid"  style="margin-top:155px">
+    <div class="row">
+        <div class="col-xs-12"   style="padding:10px; border-bottom:solid 1px #ddd ">
+            <ol class="breadcrumb" style="margin-bottom:5px">
+                <li><a href="/mobile">首页</a></li>
+                <li><a href="javaScript:"><%= title%></a></li>
+            </ol>
+        </div>
+        <% for(var i=0; i<eduMes.length; i++) {%>
+            <div class="col-xs-12">
+                <div class="media" style="padding:10px; border-bottom:solid 1px #ddd ">
+                    <div class="media-left">
+                        <a href="/mobile/content/<%= eduMes[i]._id %>">
+                            <%if(eduMes[i].c_urlname == ''){%>
+                            <img class="media-object" src="/index/images/logo.png" style="height:64px ; width:64px">
+                            <%}else{%>
+                            <img class="media-object" src="<%= eduMes[i].c_urlname %>"  title="<%= eduMes[i].c_title %>" style="height:64px ; width:70px" alt="...">
+                            <%}%>
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="/mobile/content/<%= eduMes[i]._id %>">
+                            <h5 class="media-heading" style="margin-top:10px"><%= eduMes[i].c_title %></h5>
+                            发布日期：<%= moment(eduMes[i].c_time).format('YY-MM-DD') %>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <%}%>
+
+        <div class="col-xs-12" id="add_list" value="1" get_id="<%= id%>">
+            <div class="container pull-center">
+                <button class="btn btn-info center-block"  style="margin-top:10px;margin-bottom: 50px; width:240px;height:40px;">点击加载更多</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../includes/footer.html %>
+<script>
+    $(function(){
+        var add_list=$('#add_list');
+        add_list.click(function(){
+            var value=add_list.attr('value');
+            var get_id=add_list.attr('get_id');
+            $.ajax({
+                type:'get',
+                url:'/mobile/add_list/?value='+value+'&get_id='+get_id,
+                success:function(results){
+                    if(results !=''){
+                        add_list.before(results.add_mes);
+                        value++;
+                        add_list.attr('value',value);
+                    }
+                }
+            })
+        });
+    });
+</script>
+
+</body>
+</html>

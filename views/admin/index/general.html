@@ -1,0 +1,73 @@
+  <% include ../includes/head.html %>
+        <!--.row.wrapper.border-bottom.white-bg.page-heading
+        .col-lg-12
+          h2 信息管理 &nbsp;&nbsp;&nbsp;&nbsp;
+            a.btn.btn-info(href="#")添加信息
+        ol.breadcrumb
+          li
+            a(href="#")管理画面
+          li
+            strong 信息预览
+        -->
+        <div class="row wrapper border-bottom white-bg page-heading">
+          <div class="col-lg-12">
+            <h2>信息管理</h2>
+          </div>
+          <ol class="breadcrumb">
+            <li><strong>&nbsp;&nbsp;&nbsp;&nbsp;协会概况</strong></li>
+          </ol>
+        </div>
+        <div class="row border-bottom white-bg dashboard-header">
+          <div class="col-lg-12">
+            <form method="post" enctype="multipart/form-data" action="/admin/general_change" class="form-horizontal">
+              <div class="form-group">
+                <label class="col-lg-2 control-label">协会概况：</label>
+                <div id="up_type" class="col-lg-2">
+                  <select id="id" class="form-control" name="c_pid">
+                    <% for(var i=0; i<titleData.length; i++) {%>
+                       <option value ="<%= titleData[i].id %>"
+                         <% if ( titleData[i].id == c_id) { %>
+                           selected
+                         <% } %>
+                         > <%= titleData[i].children_name %>
+                       </option>
+                    <% } %>
+                  </select>
+
+                </div>
+                <span class="col-lg-4 height-center"></span>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label">协会概况内容：</label>
+                <div id="change_content" class="col-lg-8">
+                  <textarea id="ueditor" name="c_content" placeholder="内容"><%= c_content %></textarea>
+                </div>
+                <span class="col-lg-2 height-center"></span>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-6">
+                  <button type="submit" class="btn btn-success">确认</button>
+                </div>
+                <div class="span col-lg-4 height-center text-danger"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <script>
+          $(document).ready(function(){
+             $('#up_type').on('change','select',function(){
+                  var id = $(this).children('option:selected').val();
+                  var type ='';
+                  console.log(type);
+
+                  if(id<=4){ 
+                    type = 'general';
+                  }else{
+                    type = 'jiugong';
+                  }
+                  var url="/admin/"+type+"/"+id;
+                  location.href =url;
+             });
+         });
+       </script>
+  <% include ../includes/footer.html %>

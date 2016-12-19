@@ -1,0 +1,44 @@
+<% include ../includes/header.html %>
+<div class="content">
+  <div class="padd">
+            <!--面包屑开始-->
+            <div class="BreadcrumbNav">
+                <a href="/" style="font-weight: bold; font-size: 18px">
+                  首页
+                </a>&nbsp;&gt;&nbsp;
+                <a href="javascript:;"  style="font-weight: bold; font-size: 18px">
+                  <%= titleMes.title_name %>
+                </a>
+            </div>
+            <!--面包屑结束-->
+            <div class="article oneColumn pub_border">
+                <h1>
+                    <%= titleMes.title_name %>
+                </h1>
+                <div class="pages-date">
+                  <span class="font">中华教育协会门户网站　www.chinaxh.org</span>
+
+                </div>
+                <div class="pages_print">
+                  <span class="font index_switchsize">
+            				<div class="share">
+                					<div class="mainShareDiv_24" style="background:url(/images/icon_16.jpg) no-repeat 0 0; width:125px;">
+                                            <a href="http://share.gwd.gov.cn/" target="_blank"></a>
+                            <div id="gwdShare_con_1" style="top:-10px;">
+                              <div id="gwdshare" class="gwdshare_t gwds_tools_24 get-codes-gwdshare">
+                                  <a class="gwds_weixin" style="margin:-1px 3px 0px 3px; background:url(/images/share.png) no-repeat; background-position:2px -33px !important" title="微信" href="http://www.gov.cn/guowuyuan/2016-07/08/content_5089655.htm#">&nbsp;</a>
+                                  <a class="gwds_tsina" style="margin:-1px 3px 0px 3px; background:url(/images/share.png) no-repeat; background-position:2px 5px !important" title="新浪微博" href="http://www.gov.cn/guowuyuan/2016-07/08/content_5089655.htm#">&nbsp;</a>
+                                  <span class="gwds_more" style="width:32px;height:32px; margin:10px 0px 0px 6px; background:url(/2016gov/images/icon_17.jpg) no-repeat 0 0;overflow:hidden;_display:block;_height:32px;">&nbsp;</span>
+                              </div>
+                            </div>
+                        </div>
+            				</div>
+                  </span>
+                </div>
+                <div class="pages_content" id="UCAP-CONTENT">
+                  <%-content.c_content %>
+                </div>
+            </div>
+        </div>
+</div>
+<% include ../includes/footer.html %>

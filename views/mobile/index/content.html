@@ -1,0 +1,30 @@
+<% include ../includes/header.html %>
+<div class="container-fluid"  style="margin-top:155px">
+    <div class="row">
+        <div class="col-xs-12" style="padding:10px; border-bottom:solid 1px #ddd;">
+            <ol class="breadcrumb" style="margin-bottom:5px">
+                <li><a href="/mobile">首页</a></li>
+                <li><a href="/mobile/list/<%= titleMes._id %>"><%= titleMes.title_name %></a></li>
+                <li class="active" style="width:100px;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;"><%= article.c_title %></li>
+            </ol>
+        </div>
+        <div class="col-xs-12">
+            <div class="page-header"  style="text-align: center;">
+                <h3><%= article.c_title %><br></h3>
+                <small style="font-size: 12px"> 来源：www.china.org&nbsp;&nbsp;&nbsp;&nbsp;<%= moment(article.c_time).format('YYYY-MM-DD HH:mm') %></small>
+            </div>
+        </div>
+        <div class="col-sx-12" style="padding: 15px">
+            <% if ( article.c_urlname != '') { %>
+            <p style="text-align: center; font-family: 宋体; font-size: 12pt;">
+                <img src="<%=article.c_urlname %>"  class="img-responsive"   alt="图片说明文字"><br>
+            </p>
+            <% }%>
+            <%-article.c_content %>
+        </div>
+    </div>
+</div>
+<% include ../includes/footer.html %>
+
+</body>
+</html>

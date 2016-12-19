@@ -1,0 +1,82 @@
+  <% include ../includes/head.html %>
+        <div class="row wrapper border-bottom white-bg page-heading">
+          <div class="col-lg-12">
+            <h2>信息管理&nbsp;&nbsp;&nbsp;&nbsp;
+              <!-- <a class="btn btn-info" href="#">添加信息</a> -->
+            </h2>
+          </div>          
+          <ol class="breadcrumb">
+            <li>
+              <a href="/admin/general/1"/>
+                <strong>&nbsp;&nbsp;&nbsp;&nbsp;协会概况</strong>
+              </a>
+            </li>
+            <li>
+              <a href="/admin/jiugong/5"/>
+                <strong>&nbsp;&nbsp;&nbsp;&nbsp;会员介绍预览</strong>&nbsp;/</li>
+              </a>
+            </li>
+            <li>
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;添加会员介绍</strong>
+            </li>
+          </ol>
+        </div>
+        <div class="row  border-bottom white-bg dashboard-header">
+           <div class="col-lg-12">
+               <form class="form-horizontal" method="post" id="user_editor" enctype="multipart/form-data" action="/admin/member_add_save"   style="margin-bottom: 100px">
+                   <div class="form-group">
+                       <label class="col-lg-2 control-label">来源：</label>
+                       <div class="col-lg-6">
+                           <input type="text"  class="form-control" required name="c_from" value="中华教育协会">
+                       </div>
+                       <span class="col-lg-4 height-center"></span>
+                   </div>
+
+                   <div class="form-group">
+                       <label class="col-lg-2 control-label">标题：</label>
+                       <div class="col-lg-6">
+                           <input type="text"  class="form-control" required name="c_title" value="">
+                       </div>
+                       <span class="col-lg-4 height-center">新闻或消息标题</span>
+                   </div>
+                   <div class="form-group">
+                       <label class="col-lg-2 control-label">显示为头条：</label>
+                       <div class="col-lg-6 ">
+                           <input type="checkbox" name="c_firstTitle" value="1">
+                       </div>
+                       <span class="col-lg-4 height-center">是否选择为头条</span>
+                   </div>
+                   <div class="form-group" id="c_topscroll">
+                       <label class="col-lg-2 control-label">是否滚动：</label>
+                       <div class="col-lg-6 ">
+                           <input type="checkbox" name="c_topscroll" value="1">
+                       </div>
+                       <span class="col-lg-4 height-center"></span>
+                   </div>
+
+                   <div class="form-group" id='is_checked'>
+                       <label class="col-lg-2 control-label">会员介绍图片：</label>
+                       <div class="col-lg-2 ">
+                           <input type="file" name="c_urlname">
+                       </div>
+                       <span class="col-lg-8 height-center">选择top-banner,尺寸为1100×430</span>
+                   </div>
+                   <div class="form-group">
+                       <label class="col-lg-2 control-label">内容：</label>
+                       <div class="col-lg-6">
+                           <textarea id="ueditor" name="c_content" placeholder="内容" required autofocus></textarea>
+                       </div>
+                       <span class="col-lg-4 height-center"></span>
+                   </div>
+
+
+                   <div class="form-group">
+                       <div class="col-lg-offset-2 col-lg-6">
+                           <button class="btn btn-success" type="submit"> 确认</button>
+                       </div>
+                       <span class="col-lg-4 height-center text-danger"></span>
+                   </div>
+               </form>
+           </div>
+
+  <% include ../includes/footer.html %>

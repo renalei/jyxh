@@ -1,0 +1,116 @@
+  <% include ../includes/head.html %>
+        <div class="row wrapper border-bottom white-bg page-heading">
+          <div class="col-lg-12">
+            <h2>信息管理&nbsp;&nbsp;&nbsp;&nbsp;
+              <!-- <a class="btn btn-info" href="#">添加信息</a> -->
+            </h2>
+          </div>
+          <ol class="breadcrumb">
+             <li>
+              <a href="/admin/general/1"/>
+                <strong>&nbsp;&nbsp;&nbsp;&nbsp;协会概况</strong>
+              </a>
+            </li>
+            <li>
+              <a href="/admin/jiugong/5"/>
+                <strong>&nbsp;&nbsp;&nbsp;&nbsp;会员介绍预览</strong>&nbsp;/</li>
+              </a>
+            </li>
+            <li>
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp;编辑会员介绍</strong>
+            </li>
+
+          </ol>
+        </div>
+        <div class="row  border-bottom white-bg dashboard-header">
+           <div class="col-lg-12">
+               <form class="form-horizontal" method="post" id="user_editor" enctype="multipart/form-data" action="/admin/achievement_edit_save"   style="margin-bottom: 100px">
+
+                   <div class="form-group">
+                       <label class="col-lg-2 control-label">来源：</label>
+                       <div class="col-lg-6">
+                           <input type="text"  class="form-control" required name="c_from" value="<%= article.c_from %>">
+                       </div>
+                       <span class="col-lg-4 height-center"></span>
+                   </div>
+
+                   <div class="form-group">
+                       <label class="col-lg-2 control-label">标题：</label>
+                       <div class="col-lg-6">
+                           <input type="text"  class="form-control" required name="c_title" value="<%= article.c_title %>">
+                       </div>
+                       <span class="col-lg-4 height-center">新闻或消息标题</span>
+                   </div>
+                   <div class="form-group">
+                       <label class="col-lg-2 control-label">显示为头条：</label>
+                       <div class="col-lg-6 ">
+                           <input type="checkbox" name="c_firstTitle" value="1"
+                             <% if ( 1 == article.c_firstTitle) { %>
+                               checked = "true"
+                             <% } %>
+                           >
+                       </div>
+                       <span class="col-lg-4 height-center">是否选择为头条</span>
+                   </div>                 
+
+
+                    <div class="form-group" id="c_topscroll">
+                       <label class="col-lg-2 control-label">是否滚动：</label>
+                       <div class="col-lg-2 ">
+                           <input type="checkbox" name="c_topscroll" value="<%= article.c_topscroll %>"
+                             <% if ( 1 == article.c_topscroll) { %>
+                               checked = "true"
+                             <% } %>
+                             >
+                       </div>
+                       <span class="col-lg-8 height-center"></span>
+                   </div>
+                    <input type="hidden" name="id" value="<%= article._id %>">
+                   <div class="form-group" id='is_checked' style="display:none">
+                       <label class="col-lg-2 control-label">滚动图片：</label>
+                       <div class="col-lg-2 ">
+                           <input type="file" name="c_urlname">
+                       </div>
+                       <span class="col-lg-8 height-center">选择top-banner,尺寸为1100×430</span>
+                   </div>
+                 
+                   <script>
+                     $("input[name='c_topscroll']").click(function(){
+                       var is_checked = $('#is_checked').css('display');
+                        switch(is_checked)
+                          {
+                          case 'block':
+                            $('#is_checked').css('display','none');
+                            break;
+                          case 'none':
+                            $('#is_checked').css('display','block');
+                            break;
+                          }
+                     });
+                     var dis = $("input[name='c_topscroll']").attr('value')
+                     if(dis == 1)
+                     $('#is_checked').css('display','block');
+
+                   </script>
+                  
+
+
+                   <div class="form-group">
+                       <label class="col-lg-2 control-label">内容：</label>
+                       <div class="col-lg-6">
+                           <textarea id="ueditor" name="c_content" placeholder="内容" autofocus><%= article.c_content %></textarea>
+                       </div>
+                       <span class="col-lg-4 height-center"></span>
+                   </div>
+
+
+                   <div class="form-group">
+                       <div class="col-lg-offset-2 col-lg-6">
+                           <button class="btn btn-success" type="submit"> 确认</button>
+                       </div>
+                       <span class="col-lg-4 height-center text-danger"></span>
+                   </div>
+               </form>
+           </div>
+
+  <% include ../includes/footer.html %>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link href="/index/images/logo-r.png" rel="shortcut icon" type="image/x-icon">
+      <title><%= title%></title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+
+      <link rel="stylesheet" type="text/css" href="/index/css/base.css">
+      <link rel="stylesheet" type="text/css" href="/index/css/common.css">
+      <link rel="stylesheet" type="text/css" href="/index/css/common_detail.css">
+      <!-- <link rel="stylesheet" type="text/css" href="/index/css/focus.css"> -->
+      <link rel="stylesheet" type="text/css" href="/index/css/index.css">
+      <!-- <link rel="stylesheet" type="text/css" href="/index/css/date.css"> -->
+      <!-- <link rel="stylesheet" type="text/css" href="/index/css/index_scroll.css">
+      <link rel="stylesheet" type="text/css" href="/index/css/FZYouHK_512B.css">
+      <link rel="stylesheet" type="text/css" href="/index/css/FZZHUNYSK.css"> -->
+     <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+      <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+      <script src="/index/js/jquery-1.8.3.min.js"></script>
+      <script type="text/javascript" src="/index/js/audio.min.js"></script>
+      <script type="text/javascript" src="/index/js/menu.js"></script>
+      <script type="text/javascript" src="/index/js/ie6PNG.js"></script>
+      <script type="text/javascript">DD_belatedPNG.fix('.D1fBt a,.play,background,.slidesjs-next,background,.slidesjs-previous,background');</script>
+      <script>
+          function IsPC()
+          {
+              var userAgentInfo = navigator.userAgent;
+              var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+              var flag = true;
+              for (var v = 0; v < Agents.length; v++) {
+                  if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+              }
+              return flag;
+          }
+          if(!IsPC()){
+              location.href = '/mobile';
+          }
+      </script>
+  </head>
+
+<body>
+  <div class="main">
+    <!--公共头开始-->
+    <div class="header" id="ifr_top">
+        <div class="header_top">
+          <!--logo左侧开始-->
+            <div class="header_left fl">
+                <a href="/">
+                    <img class="logo" src="/index/images/logo.png" width="80" height="80">
+                    <img src="/index/images/logo_wz1.png" width="402" height="49" style="margin-bottom: 15px">
+                </a>
+            </div>
+          <!--logo左侧结束-->
+          <!--logo右侧开始-->
+            <div class="header_right fr">
+               <div class="fzgn" style="width: 90%; font-size:20px">
+                    <strong><a href="javascript:;"><%=moment().format("YYYY-MM-DD dddd") %></a></strong>
+               </div>
+            </div>
+          <!--logo右侧结束-->
+        </div>
+        <div class="clear"></div>
+          <!--导航-->
+        <div class="nav">
+          <div class="nav_home">
+             <div class="nav_left">
+               <a href="/">
+                 <img src="/index/images/icon_9.png" width="45" height="45">
+               </a>
+             </div>
+             <div id="menu">
+                  <ul id="nav">
+                      <li class="mainlevel bolf" id="mainlevel_02">
+                        <a href="/">
+                          &nbsp;首&nbsp;&nbsp;页&nbsp;
+                        </a>
+                      </li>
+                      <li class="mainlevel">协会概况
+                        <ul style="display: none;" class="sub_nav_022">
+                          <li><a href="/about/7">协会简介</a></li>
+                          <li><a href="/about/8">职能和任务</a></li>
+                          <li><a href="/about/9">协会章程</a></li>
+                          <li><a href="/about/10">会员介绍</a></li>
+                          <li><a href="/about/10">联系协会</a></li>
+                         </ul>
+                      </li>
+                      <li class="mainlevel">
+                        <a href="/list/3">
+                          教育咨讯
+                        </a>
+                      </li>
+                      <li class="mainlevel">
+                        <a href="/about/4">
+                          学术成果
+                        </a>
+                      </li>
+                      <li class="mainlevel">
+                        <a href="/list/5">
+                          学术交流
+                        </a>
+                      </li>
+                      <li class="mainlevel">
+                        <a href="/list/6">
+                          政策法规
+                        </a>
+                      </li>
+                       <li class="mainlevel">
+                        <a href="/list/11">
+                          资源信息库
+                        </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+    </div>

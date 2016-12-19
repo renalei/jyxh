@@ -1,0 +1,93 @@
+  <% include ../includes/head.html %>
+        <div class="row wrapper border-bottom white-bg page-heading">
+          <div class="col-lg-12">
+            <h2>信息管理&nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="btn btn-info" href="/admin/exchange_add">添加学术交流信息</a>
+            </h2>
+          </div>
+          <ol class="breadcrumb">
+            <li><strong>&nbsp;&nbsp;&nbsp;&nbsp;学术交流预览</strong></li>
+          </ol>
+        </div>
+        <div class="row  border-bottom white-bg dashboard-header"  style="margin-bottom: 20px">
+           <div class="col-lg-12"   style="margin-bottom: 20px">
+               <table class="table table-hover admin-table-order">
+                   <colgroup>
+                       <col width="120"/>
+                   </colgroup>
+                   <thead>
+                       <tr>
+                           <th>序号</th>
+                           <th>信息类别</th>
+                           <th>标题</th>
+                           <th>是否头条</th>
+                           <th>是否轮播</th>
+                           <th>时间</th>
+                           <th>操作</th>
+                       </tr>
+                   </thead>
+                   <tbody style="margin-bottom:20px">
+                     <% for(var i=0; i<articles.length; i++) {%>
+                       <tr class="item-id-<%= articles[i]._id %>">
+                           <td>
+                                  <%= begin + i + 1 %>
+                           </td>
+                           <td>
+                                  <% if ( articles[i].c_pid == 9) { %>
+                                    专家智囊
+                                  <% }%>
+                                  <% if ( articles[i].c_pid == 10) { %>
+                                    专家视野
+                                  <% }%>
+                                  <% if ( articles[i].c_pid == 11) { %>
+                                    优秀案例
+                                  <% }%>
+                           </td>
+                           <td>
+                               <div class="table-div"><%= articles[i].c_title %></div>
+                           </td>
+                           <td>
+                               <div class="table-div150">
+                                 <% if ( articles[i].c_firstTitle == 1) { %>
+                                   头版头条
+                                   <% }else{ %>
+                                     普通新闻
+                                   <% }%>
+                               </div>
+                           </td>
+                           <td>
+                              <div class="table-div150">
+                                <% if ( articles[i].c_topscroll == 1) { %>
+                                  轮播新闻
+                                <% }else{ %>
+                                  普通新闻
+                                <% }%>
+                              </div>
+                           </td>
+                           <td>
+                               <div class="table-div150"><%= moment(articles[i].c_time).format('YYYY-MM-DD') %></div>
+                           </td>
+
+                           <td>
+                               <a href="/admin/exchange_edit/<%= articles[i]._id %>" class="label label-info">编辑</a>
+                               <a class="label label-danger del_info del" type="button" data-id="<%= articles[i]._id %>">删除</a>
+                               <!-- button.btn.btn-danger.del(type="button", data-id="#{item._id}") 删除 -->
+                           </td>
+                       </tr>
+                     <% } %>
+                   </tbody>
+               </table>
+               <div id="page">
+                  <ul class="pagination pagination-lg">
+                      <li><a href="/admin/exchange/4/?p=0">首页</a></li>
+                      <li><a href="/admin/exchange/4/?p=<% if ( page_display -1 ==  0) { %>0<% }else{ %><%= page_display -2%><% }%>">&laquo;</a></li>
+                      <li><a href="/admin/exchange/4/?p=<% if ( page_display +1 >=  totalPage) { %><%= totalPage -1 %><% }else{ %><%= page_display %><% }%>">&raquo;</a></li>
+                      <li><a href="/admin/exchange/4/?p=<%= totalPage - 1 %>">尾页</a></li>
+                      <li><a> 第<%= page_display %>页 共 <%= totalPage %> 页</a></li>
+                  </ul>
+               </div>
+           </div>
+       </div>
+       <script src="/js/delete.js"></script>
+
+  <% include ../includes/footer.html %>

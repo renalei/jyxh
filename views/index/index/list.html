@@ -1,0 +1,72 @@
+<% include ../includes/header.html %>
+<div class="content">
+    <div class="main">
+        <div class="content">
+            <div class="padd">
+                <!--面包屑开始-->
+                <div class="BreadcrumbNav">
+                    <a href="/" style="font-weight: bold;">
+                      首页
+                    </a>
+                    &nbsp;&gt;&nbsp;
+                    <a href="javascript:;">
+                      <%=title_name.title_name %>
+                    </a>
+                </div>
+                <!--要闻标题-->
+                <div class="channel_tab">
+                  <span class="noline">
+                    <a href="javascript:;">
+                      <%=title_name.title_name %>
+                    </a>
+                  </span>
+                </div>
+                <!--要闻列表-->
+                <div class="news_box">
+                    <div class="list list_1 list_2" style="min-height: 400px;">
+                        <ul>
+                          <% for(var i=0; i<eduMes.length; i++) {%>
+                             <li>
+                                 <h4>
+                                     <a href="/content/<%= eduMes[i]._id %>">
+                                       <%= eduMes[i].c_title %>
+                                     </a>
+                                     <span class="date">
+                                       <%= moment(eduMes[i].c_time).format('YYYY-MM-DD') %>
+                                     </span>
+                                 </h4>
+                             </li>
+                          <% } %>
+                        </ul>
+                    </div>
+                    <% if ( totalPage >1) { %>
+                        <style type="text/css">
+                          .page li {float: left;}
+                          .page {margin-left: 30%; margin-top: 30px}
+                        </style>
+                        <ul class="page">
+                          <li>
+                            <a class="zl_more zl_morefzl " href="/list/<%= id%>?p=<% if ( page_display -1 ==  0) { %>0<% }else{ %><%= page_display -2%><% }%>">
+                              &lt;&lt;上一页
+                            </a>
+                          </li>
+
+                          <li>
+                            <a class="zl_more zl_morefzl " href="/list/<%= id%>?p=<% if ( page_display +1 >=  totalPage) { %><%= totalPage -1 %><% }else{ %><%= page_display %><% }%>">
+                              下一页&gt;&gt;
+                            </a>
+                          </li>
+
+                          <li>
+                            <a class="zl_more zl_morefzl ">
+                              第<%= page_display %>页&nbsp;&nbsp;&nbsp;&nbsp;共 <%= totalPage %> 页
+                            </a>
+                          </li>
+                        </ul>
+                      <%}%>                  
+                </div><!-- news_box end -->
+            </div><!-- padd end -->
+        </div><!-- content end -->
+
+</div>
+<% include ../includes/footer.html %>

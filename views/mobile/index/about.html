@@ -1,0 +1,25 @@
+<% include ../includes/header.html %>
+<div class="container-fluid"  style="margin-top:155px">
+    <div class="row">
+        <div class="col-xs-12"   style="padding:10px; border-bottom:solid 1px #ddd ">
+            <ol class="breadcrumb" style="margin-bottom:5px">
+                <li><a href="/mobile">首页</a></li>
+                <li> <%= titleMes.title_name %></li>
+            </ol>
+        </div>
+        <div class="col-xs-12">
+            <div class="page-header"  style="text-align: center;">
+                <h3><%=  titleMes.title_name  %></h3>
+                <small style="font-size: 12px"> 中华教育协会门户网站　www.chinaxh.org </small>
+            </div>
+        </div>
+        <div class="col-sx-12"  style="padding:10px;">
+            <%-content.c_content %>
+        </div>
+
+    </div>
+</div>
+<% include ../includes/footer.html %>
+
+</body>
+</html>

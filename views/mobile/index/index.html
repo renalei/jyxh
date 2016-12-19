@@ -1,0 +1,84 @@
+<% include ../includes/header.html %>
+    <div class="container-fluid"  style="margin-top:155px">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <% for(var i=0; i<scrollNews.length; i++) {%>
+                            <div class="swiper-slide">
+                                <a href="/mobile/content/<%= scrollNews[i]._id %>">
+                                    <img class="img-responsive" src="<%= scrollNews[i].c_urlname %>" height="185" title="<%= scrollNews[i].c_title %>" alt="">
+                                    <div class="carousel-caption">
+                                        <h5><%= scrollNews[i].c_title %></h5>
+                                    </div>
+                                </a>
+                            </div>
+                        <%}%>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <% for(var i=0; i<displayNews.length; i++) {%>
+                <div class="col-xs-12">
+                    <div class="media" style="padding:10px; border-bottom:solid 1px #ddd ">
+                        <div class="media-left">
+                            <a href="/mobile/content/<%= displayNews[i]._id %>">
+                                <%if(displayNews[i].c_urlname == ''){%>
+                                    <img class="media-object" src="/index/images/logo.png" style="height:64px ; width:64px">
+                                <%}else{%>
+                                    <img class="media-object" src="<%= displayNews[i].c_urlname %>"  title="<%= displayNews[i].c_title %>" style="height:64px ; width:70px" alt="...">
+                                <%}%>
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <a href="/mobile/content/<%= displayNews[i]._id %>">
+                                <h5 class="media-heading" style="margin-top:10px"><%= displayNews[i].c_title %></h5>
+                                发布日期：<%= moment(displayNews[i].c_time).format('YY-MM-DD') %>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <%}%>
+            <div class="col-xs-12"  id="add_button_div" value="1" >
+                <div class="container pull-center">
+                    <button class="btn btn-info center-block" style="margin-top:10px;margin-bottom: 50px; width:240px;height:40px;">点击加载更多</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<% include ../includes/footer.html %>
+    <script src="/Swiper-master/dist/js/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            spaceBetween: 30
+        });
+    </script>
+    <script>
+        $(function(){
+            var add_button_div=$('#add_button_div');
+            add_button_div.click(function(){
+                var value=add_button_div.attr('value');
+                //alert(value);
+                $.ajax({
+                    type:'post',
+                    url:'/mobile/add_displayNews/'+value,
+                    success:function(results){
+                        if(results !=''){
+                            add_button_div.before(results.add_mes);
+                            value++;
+                            add_button_div.attr('value',value);
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+</html>

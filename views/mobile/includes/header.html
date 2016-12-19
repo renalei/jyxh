@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title><%= title%></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content=""/>
+
+    <link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
+    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/mobile/style.css">
+    <link rel="stylesheet" href="/Swiper-master/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="/Swiper-master/swiper.css">
+    <script>
+        function IsPC()
+        {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+        }
+        return flag;
+        }
+        if(IsPC()){
+            location.href = '/';
+        }
+    </script>
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top" id="top_banner">
+    <header class="container-fluid">
+        <div class="row">
+            <!--logo左侧开始-->
+            <div class="col-xs-6">
+                <a href="/mobile">
+                    <img class="logo" src="/index/images/logo.png">
+                    <img class="logo_bottom" src="/index/images/logo_wz1.png" width="402" height="49" style="margin-bottom: 15px">
+                </a>
+            </div>
+            <!--logo左侧结束-->
+            <!--logo右侧开始-->
+            <div class="col-xs-6">
+                <div class="header-right">
+                    <strong><a href="javascript:;"><%=moment().format("YYYY-MM-DD dddd") %></a></strong>
+                </div>
+            </div>
+        </div>
+        <!--logo右侧结束-->
+    </header>
+    <nav class="container-fluid">
+        <div class="row  header">
+            <div class="col-xs-3">
+                <a href="/mobile">
+                    &nbsp;首&nbsp;&nbsp;页&nbsp;
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="/mobile/list/3">
+                    教育咨讯
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="/mobile/list/5">
+                    政策法规
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="/mobile/list/6">
+                    资源信息
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
